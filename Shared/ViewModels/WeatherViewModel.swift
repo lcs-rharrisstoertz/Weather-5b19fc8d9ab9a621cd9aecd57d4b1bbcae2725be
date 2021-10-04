@@ -11,6 +11,12 @@ class WeatherViewModel: ObservableObject {
     
     // Create an empty list to keep track of predictions made
     @Published var history: [Prediction] = []
+    
+    init() {
+        for _ in 1...3 {
+            _ = self.providePrediction()
+        }
+    }
 
     // Give a predicction
     func providePrediction() -> Prediction {
