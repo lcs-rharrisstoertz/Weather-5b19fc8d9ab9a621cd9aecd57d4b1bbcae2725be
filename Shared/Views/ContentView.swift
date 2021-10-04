@@ -40,7 +40,7 @@ struct ContentView: View {
             }
             .frame(maxWidth: .infinity)
             .padding() //padding around text
-            .background(Color.blue)
+            .background(LinearGradient(gradient: Gradient(colors: [.pink, .orange, .yellow]), startPoint: .top, endPoint: .bottom))
             .padding() //padding around background (I don't want it to extend to the edges)
             .foregroundColor(.white)
             
