@@ -14,24 +14,35 @@ struct ContentView: View {
     @State var temperature: Double
     
     @State var feel: String
-
+    
     @State var conditions: String
-
+    
     var body: some View {
-
+        
         VStack {
             
             Spacer()
             
-            Text("\(conditions)")
-                .font(.title)
-
-            Text("\(String(format: "%.1f", arguments: [temperature])) °C")
-                .font(.largeTitle)
-                .bold()
-            
-            Text("\(feel)")
-                .font(.title3)
+            VStack {
+                Text("\(conditions)")
+#if os(iOS)
+                    .font(.title)
+#else
+                    .font(.title2)
+#endif
+                
+                Text("\(String(format: "%.1f", arguments: [temperature])) °C")
+                    .font(.largeTitle)
+                    .bold()
+                
+                Text("\(feel)")
+                    .font(.title3)
+            }
+            .frame(maxWidth: .infinity)
+            .padding() //padding around text
+            .background(Color.blue)
+            .padding() //padding around background (I don't want it to extend to the edges)
+            .foregroundColor(.white)
             
             Spacer()
             
@@ -50,7 +61,7 @@ struct ContentView: View {
             }
             
             Spacer()
-
+            
             
         }
         .navigationTitle("Current")
