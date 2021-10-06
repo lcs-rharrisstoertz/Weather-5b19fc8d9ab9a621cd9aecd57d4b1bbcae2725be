@@ -23,6 +23,12 @@ struct ContentView: View {
             
             Spacer()
             
+            Text("\(String(format: "%.1f", arguments: [temperature])) °C")
+                .font(.largeTitle)
+                .bold()
+                .foregroundColor(.white)
+            
+            
             VStack {
                 Text("\(conditions)")
 #if os(iOS)
@@ -31,20 +37,16 @@ struct ContentView: View {
                     .font(.title2)
 #endif
                 
-                Text("\(String(format: "%.1f", arguments: [temperature])) °C")
-                    .font(.largeTitle)
-                    .bold()
                 
                 Text("\(feel)")
                     .font(.title3)
             }
             .frame(maxWidth: .infinity)
             .padding() //padding around text
-            .background(LinearGradient(gradient: Gradient(colors: [.pink, .orange, .yellow]), startPoint: .top, endPoint: .bottom))
+            .background(.white)
             .padding() //padding around background (I don't want it to extend to the edges)
-            .foregroundColor(.white)
+            .foregroundColor(.blue)
             
-            Spacer()
             
             Button {
                 
@@ -59,11 +61,15 @@ struct ContentView: View {
             } label: {
                 Text("Get New Prediction")
             }
+            .padding(12)
+            .foregroundColor(.blue)
+            .background(.white)
+            .cornerRadius(8)
             
             Spacer()
             
-            
         }
+        .background(LinearGradient(gradient: Gradient(colors: [.blue, .white]), startPoint: .top, endPoint: .bottom))
         .navigationTitle("Current")
         
     }
